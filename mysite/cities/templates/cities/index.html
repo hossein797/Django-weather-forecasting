@@ -1,0 +1,22 @@
+{% extends './layout/base.html' %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'mysite/cities/static/cities/index_style.css' %}">
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+
+<div class="container">
+    <h1>List of Cities</h1>
+    {% if cities %}
+    <ul>
+        {% for city in cities %}
+        <li><a href="{% url 'cities:forecast' city.id %}">{{ city.name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="no-city">No city defined.</p>
+    {% endif %}
+</div>
+{% endblock content %}
